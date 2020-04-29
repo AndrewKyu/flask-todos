@@ -1,0 +1,5 @@
+Pipfile.lock
+/__pycache__
+db.sqlite
+/client/package-lock.json
+/client/node_modules

@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 import TextFieldArea from '../common/TextFieldArea.jsx';
 import InputTextField from '../common/InputTextField.jsx';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-export default class TaskForm extends Component {
+import { createTask } from '../../actions/taskActions.js';
+
+class TaskForm extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -16,14 +20,15 @@ export default class TaskForm extends Component {
   addTask(e){
     e.preventDefault();
     const { name, description, done } = this.state;
-    const { postTask } = this.props;
+    const { postTask, createTask } = this.props;
     const newTask = {
       name,
       description,
       done
     }
     // console.log(newTask);
-    postTask(newTask);
+    createTask(newTask, this.props.history);
+    // postTask(newTask);
   }
   onChange(e){
     e.preventDefault();
@@ -61,3 +66,14 @@ export default class TaskForm extends Component {
     )
   }
 }
+
+TaskForm.propTypes = {
+  createTask: PropTypes.func.isRequired,
+  task: PropTypes.object.isRequired
+}
+
+const mapStateToProp = state => ({
+  task: state.task
+});
+
+export default connect(mapStateToProp, { createTask })(TaskForm);

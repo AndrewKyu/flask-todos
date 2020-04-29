@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --open --hot --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "server": "python ../app.py",
+    "dev": "concurrently \"npm run server\" \"npm run start\""
   },
   "author": "Andrew Kyu",
   "license": "ISC",
@@ -26,6 +28,12 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "axios": "^0.19.2"
-  }
+    "axios": "^0.19.2",
+    "prop-types": "^15.7.2",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.1.2",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
+  },
+  "proxy": "http://localhost:5000"
 }

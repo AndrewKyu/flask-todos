@@ -4,8 +4,6 @@ from flask_marshmallow import Marshmallow
 import os
 from flask_cors import CORS
 
-from datetime import datetime
-print(f'{datetime.utcnow} is the date')
 # Init app
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))

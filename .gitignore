@@ -3,3 +3,4 @@ Pipfile.lock
 db.sqlite
 /client/package-lock.json
 /client/node_modules
+/.vscode

@@ -20,19 +20,16 @@ class TaskForm extends Component {
   addTask(e){
     e.preventDefault();
     const { name, description, done } = this.state;
-    const { postTask, createTask } = this.props;
+    const { createTask } = this.props;
     const newTask = {
       name,
       description,
       done
     }
-    // console.log(newTask);
     createTask(newTask, this.props.history);
-    // postTask(newTask);
   }
   onChange(e){
     e.preventDefault();
-    console.log(e.target.checked);
     this.setState({ [e.target.name]: ((e.target.name === 'done') ? e.target.checked  : e.target.value) });
   }
   render() {
@@ -60,7 +57,7 @@ class TaskForm extends Component {
             name="done"
             onChange={this.onChange}
           />
-          <input type="submit" value="Add Task" className="btn btn-success"/>
+          <input type="submit" value="Add Task" className="btn btn-success mt-3"/>
         </form>
       </div>
     )

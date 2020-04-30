@@ -51,14 +51,27 @@ export const getTasks = () => dispatch => {
     })
 }
 
-export const updateTask = taskID => dispatch => {
-  console.log(taskID);
+export const updateTask = (taskID, updatedData) => dispatch => {
+  axios
+    .put(`${localhost}/api/task/${taskID}`, updatedData)
+    .then(res => {
+      dispatch({
+        type: GET_TASK,
+        payload: res.data
+      })
+    })
+    .catch(err =>
+      dispatch({
+        type: GET_TASK,
+        payload: null
+      })
+    )
 }
 
 export const getCurrentTask = taskID => dispatch => {
   dispatch(setTaskLoading());
   axios
-    .get(`/api/task/${taskID}`)
+    .get(`${localhost}/api/task/${taskID}`)
     .then(res =>
       dispatch({
         type: GET_TASK,

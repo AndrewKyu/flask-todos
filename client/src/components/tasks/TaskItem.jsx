@@ -1,18 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { deleteTask } from '../../actions/taskActions';
 
 class TaskItem extends Component {
   constructor(props){
     super(props);
     this.onDeleteTask = this.onDeleteTask.bind(this);
-    this.onEditTask = this.onEditTask.bind(this);
-  }
-  onEditTask(e){
-    e.preventDefault();
-    const { id } = this.props;
-    console.log('editing task...');
   }
   onDeleteTask(e){
     e.preventDefault();
@@ -20,15 +15,14 @@ class TaskItem extends Component {
     deleteTask(id);
   }
   render() {
-    const { name, description, done } = this.props;
+    const { name, description, done, id } = this.props;
     return (
       <div className="card mt-4">
         <div className="card-body">
           <h5 className="card-title">{name}</h5>
           <p className="card-text">{description}</p>
           <span className={(done) ? "badge card-link badge-success" : "badge card-link badge-danger"}>{(done) ? 'done' : 'not done'}</span>
-          {/* <p className="card-text">Created: {created_at}</p> */}
-          <button type="button" className="btn btn-secondary btn-sm card-link" onClick={this.onEditTask}>Edit Task</button>
+          <Link className="btn btn-secondary btn-sm card-link" to={`/edit-task/${id}`}>Edit Task</Link>
           <button type="button" className="btn btn-danger btn-sm card-link" onClick={this.onDeleteTask}>Delete</button>
         </div>
       </div>

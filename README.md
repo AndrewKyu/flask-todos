@@ -2,7 +2,7 @@
 A Task manager app that's uses Python Flask as the backend frameworks, React Js in the frontend, and SQLite for the database. Project made to be familiar with creating RESTful APIs in Python
 
 # Pre Requisites
-| Development Tool | Version | Link |
+| Runtime Environment | Version | Link |
 | ---------------- | ------- | ---- |
 | Node Js | v10.16.1 | https://nodejs.org/en/download/releases/ |
 | Python3 | v3.8.2 | https://www.python.org/downloads/ |
